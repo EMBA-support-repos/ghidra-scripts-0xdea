@@ -39,6 +39,7 @@
 
 import java.util.List;
 import java.util.ArrayList;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
@@ -67,6 +68,10 @@ public class Haruspex extends GhidraScript
 		try {
 			outputPath = askString("Output directory path", "Enter the path of the output directory:");
 		} catch (Exception e) {
+      // printf("Binary %s \n", getProgramFile().getName());
+      outputPath="/tmp/haruspex_" + getProgramFile().getName();
+      File f = new File(outputPath);
+      f.mkdir();
 			printf("Output directory not supplied, using default \"%s\".\n", outputPath);
 		}
 
